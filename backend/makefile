@@ -1,6 +1,8 @@
 main.exe:main.o taxidispatch.o
-	g++ main.o taxidispatch.o -o main -g
+	g++ -O2 main.o taxidispatch.o -o main -g
 taxidispatch.o:taxidispatch.cpp taxidispatch.h
-	g++ taxidispatch.cpp -c
+	g++ -O2 taxidispatch.cpp -c
 main.o:main.cpp taxidispatch.h
-	g++ main.cpp -c
+	g++ -O2 main.cpp -c
+clean:
+	rm main taxidispatch.o main.o

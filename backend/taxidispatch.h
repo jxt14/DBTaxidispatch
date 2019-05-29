@@ -10,6 +10,11 @@
 #include <cmath>
 #include <string>
 #include <vector>
+#include <queue>
+#include <utility>
+#include <assert.h>
+
+typedef std::pair<int, int> pi;
 
 struct Position{
     double lat,lon;
@@ -32,21 +37,34 @@ struct Car{
     int id;
     Position customer[5];
     int cusnum;
+    int dsef[5];
+    int dc[5][5];
+    int tnet;
     double tdis;
 };
 
 struct TaxiDispatch{
     std::vector<Car> dcar;
     std::vector<Position> rd;
+    std::vector<int> g,ednext,y,dis,ds,dt,p,que;
+    std::priority_queue<pi, std::vector<pi>, std::greater<pi>> q;
+    int ednum;
     int carnum,rdnum;
     int bt[16];
     TaxiDispatch();
-    Position Preprocess(std::string s);
-    double dist(Position d1, Position d2);
-    double travel(Car tc);
-    double StringToDouble(std::string s);
-    void query(int st, int dest, std::vector<int>& res);
+    Position Preprocess(std::string);
+    double dist(Position, Position);
+    double travelgeo(Car);
+    int travelnet(Car);
+    double StringToDouble(std::string);
+    void querygeo(int, int, std::vector<int>&);
+    void querynet(int, int, std::vector<int>&);
     void Init();
+    void InitCar();
+    void InitRoad();
+    void addedge(int, int, int);
+    void spfa(int, std::vector<int>&);
+    void dij(int, std::vector<int>&);
 };
 
 
