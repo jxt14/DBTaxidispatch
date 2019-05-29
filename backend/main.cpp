@@ -9,6 +9,7 @@ int main()
 
     vector<Result> rs;
     int sts,edd;
+    printf("please input starting and destination point\n");
     scanf("%d %d", &sts, &edd);
 
     ths.querynet(sts,edd,rs);

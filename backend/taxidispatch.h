@@ -71,7 +71,7 @@ struct TaxiDispatch{
     std::vector<Car> dcar;
     std::vector<Position> rd;
     std::vector<int> g,ednext,y,dis,ds,dt,p,que;
-    std::priority_queue<pi, std::vector<pi>, std::greater<pi>> q;
+    std::priority_queue<pi, std::vector<pi>, std::greater<pi> > q;
     int ednum;
     int carnum,rdnum;
     int bt[16];
