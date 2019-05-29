@@ -17,15 +17,7 @@
     <div id="container">
     </div>
     <script type="text/javascript">
-var map = new BMap.Map("container");
-var points = new Array();
-points[0] = new BMap.Point(116.65644,39.89045);
-map.addControl(new BMap.NavigationControl());
-map.centerAndZoom(points[0], 15);
-map.enableScrollWheelZoom(true);
-var marker = new BMap.Marker(points[0]);
-map.addOverlay(marker);
-
+      require('./renderer.js')
     </script>
 </body>
 </html>
