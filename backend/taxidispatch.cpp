@@ -106,6 +106,7 @@ int TaxiDispatch::travelnet(Car tc)
     int k,kd,lim,limt,t;
     int ad;
     lim = tc.cusnum;
+    if (lim == 0) return 0;
     limt = (1<<lim) - 1;
     for (int i = 0; i < (1<<lim); i++)
         for (int j = 1; j <= lim; j++)f[i][j] = -1;
@@ -136,6 +137,7 @@ double TaxiDispatch::travelgeo(Car tc)
     int k,kd,lim,limt,t;
     double ad;
     lim = tc.cusnum;
+    if (lim == 0) return 0;
     limt = (1<<lim) - 1;
     for (int i = 0; i < (1<<lim); i++)
         for (int j = 1; j <= lim; j++)f[i][j] = -1;
@@ -160,7 +162,7 @@ double TaxiDispatch::travelgeo(Car tc)
     return mn;
 }
 
-void TaxiDispatch::querynet(int st, int dest, vector<int>& res)
+void TaxiDispatch::querynet(int st, int dest, vector<Result>& res)
 {
     res.clear();
 
@@ -186,7 +188,7 @@ void TaxiDispatch::querynet(int st, int dest, vector<int>& res)
         d3 = travelnet(nc);
         if (d3 - d4 > 10000) continue;
         if (d2 + d3 - d1 > 10000) continue;
-        res.push_back(i);
+        res.push_back(Result(i, d1, d2, d3, d4));
         if (res.size() == 5) break;
     }
 }

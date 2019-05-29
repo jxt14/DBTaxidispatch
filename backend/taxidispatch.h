@@ -16,10 +16,34 @@
 
 typedef std::pair<int, int> pi;
 
+struct Result{
+    int carnum;
+    int d1,d2,d3,d4;
+    Result()
+    {
+        carnum = 0;
+        d1 = d2 = d3 = d4 = 0;
+    }
+    Result(int carnum, int d1, int d2, int d3, int d4)
+    {
+        this->carnum = carnum;
+        this->d1 = d1;
+        this->d2 = d2;
+        this->d3 = d3;
+        this->d4 = d4;
+    }
+    void Output()
+    {
+        printf("Car number %d\n", carnum);
+        printf("D1 : %d D2 : %d D3: %d D4 : %d\n", d1, d2, d3, d4);        
+    }
+};
+
 struct Position{
     double lat,lon;
     int num;//roat network id
-    Position(double latt, double lonn, int numm){
+    Position(double latt, double lonn, int numm)
+    {
         lat = latt;
         lon = lonn;
         num = numm;
@@ -58,7 +82,7 @@ struct TaxiDispatch{
     int travelnet(Car);
     double StringToDouble(std::string);
     void querygeo(int, int, std::vector<int>&);
-    void querynet(int, int, std::vector<int>&);
+    void querynet(int, int, std::vector<Result>&);
     void Init();
     void InitCar();
     void InitRoad();
